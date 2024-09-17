@@ -1,0 +1,25 @@
+#Uniform Crossover
+A1 = [1,0,1,0,1,0,1,0]
+A2 = [0,1,0,1,0,1,0,1]
+n = int(input("Enter the position for uniform point crossover: "))
+c1 = []
+c2 = []
+
+for i in range(0, len(A1)):
+    if i%2 == 0:
+        c1.append(A1[i])
+        if len(A1)%2 == 1 and i == (A1) -1:
+            pass
+        else:
+            c1.append(A2[i+1])
+    else:
+        c2.append(A2[i-1])
+        c2.append(A1[i])
+        if len(A1) %2 == 1 and i == (A1) -2:
+            c2.append(A2[i+1])
+
+print("\nParent \nA1 => ", A1, "\nA2 => ", A2)
+print("\nUnifrom Point Crossover \nc1 => ", c1, "\nc2 => ", c2)
+
+
+
