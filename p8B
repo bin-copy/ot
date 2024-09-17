@@ -1,0 +1,14 @@
+#Genetic algorithm with multiple flip using mutation operator
+A = [1,0,1,0,1,0,1]
+print(A)
+pos = list(map(int,input("Enter the position for flip: ").split()))
+for i in pos:
+    if i < len(A):
+        if A[i] == 1:
+            A[i] = 0
+        else:
+            A[i] = 1
+        print("Flipped")
+    else:
+        print("Position is greater than size cannot be flipped.")
+print(A)
