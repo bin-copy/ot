@@ -1,0 +1,19 @@
+#Single Point Crossover
+
+A1 = [1,0,1,0,1,0,1,0]
+A2 = [0,1,0,1,0,1,0,1]
+
+n = int(input("Enter the position for single point crossover: "))
+c1 = []
+c2 = []
+
+for i in range(0, n):
+    c1.append(A1[i])
+    c2.append(A1[i])
+for i in range (n, len(A1)):
+    c1.append(A2[i])
+    c2.append(A2[i])
+
+print("\nParent \nA1 => ", A1, "\nA2 => ", A2)
+print("\nSingle Point Crossover \nc1 => ", c1, "\nc2 => ", c2)
+
