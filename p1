@@ -1,0 +1,23 @@
+#Transportation Problem
+grid = [[5,1,9], [4,2,8],[8,7,2]] # table
+supply = [300,600,600]#supply
+demand = [150,450,900]#demand
+startR = 0 #start row
+startC = 0 #start col
+ans = 0
+# loop runs until it reaches the bottom right corner
+while(startR != len(grid) and startC != len(grid[0])):
+    # if deamnd is greater than supply
+    if (supply[startR] <= demand[startC]):
+        ans += supply[startR] * grid[startR][startC]
+        #subtract the value of supply from the demand
+        demand[startC] -= supply[startR]
+        startR += 1
+        #if supply is grater than demand
+    else:
+        ans += demand[startC] * grid[startR][startC]
+        #subtract the value of demand from the supply
+        supply[startR] -= demand[startC]
+        startC += 1
+print("The initial feasible basic solution is: ", ans)
+
