@@ -1,0 +1,27 @@
+#Assignment Problem
+from scipy.optimize import linear_sum_assignment
+import numpy as np
+def solve_assignment_problem(cost_matrix):
+    # Convert the cost matrix to a NumPy array
+    cost_matrix = np.array(cost_matrix)
+    # Solve the assignment problem
+    row_indices, col_indices = linear_sum_assignment(cost_matrix)    
+    # Calculate the minimum cost
+    min_cost = cost_matrix[row_indices, col_indices].sum()    
+    return row_indices, col_indices, min_cost
+cost_matrix = [
+    [9, 11, 14, 11, 10],
+    [6, 15, 13, 13, 10],
+    [12, 13, 6, 7, 8],
+    [14, 5, 10, 11, 10],
+    [7, 6, 14, 10, 14]
+]
+row_indices, col_indices, min_cost = solve_assignment_problem(cost_matrix)
+print("Optimal Assignment:")
+for row, col in zip(row_indices, col_indices):
+    print(f"Task {row} -> Agent {col}")
+print(f"Minimum Cost: {min_cost}")
+
+
+
+
