@@ -1,0 +1,27 @@
+#LPP problem by maximization. 
+import pulp
+
+# Create a problem variable
+prob = pulp.LpProblem("Maximize_Z", pulp.LpMaximize)
+
+# Define the variables
+x1 = pulp.LpVariable("x1", lowBound=0)  # x1 >= 0
+x2 = pulp.LpVariable("x2", lowBound=0)  # x2 >= 0
+# Define the objective function
+prob += 5 * x1 + 4 * x2, "Objective"
+# Define the constraints
+prob += x1 + 2 * x2 <= 6
+prob += 3 * x1 + 2 * x2 <= 12
+
+# Solve the problem
+prob.solve()
+
+# Print the results
+print(f"Status: {pulp.LpStatus[prob.status]}")
+print(f"Optimal value: {pulp.value(prob.objective)}")
+print(f"x1 = {pulp.value(x1)}")
+print(f"x2 = {pulp.value(x2)}")
+
+
+
+
