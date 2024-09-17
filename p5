@@ -1,0 +1,28 @@
+#Dijkstra's Algorithm
+import heapq
+def dijkstra(graph, source):
+    dist = {v: float('infinity') for v in graph}
+    dist[source] = 0
+    pq = [(0, source)]
+    while pq:
+        d, v = heapq.heappop(pq)
+        if d > dist[v]:
+            continue
+        for u, w in graph[v].items():
+            new_dist = d + w
+            if new_dist < dist[u]:
+                dist[u] = new_dist
+                heapq.heappush(pq, (new_dist, u))
+    return dist
+graph = {
+    "A": {"B": 4, "C": 2},
+    "B": {"C": 1, "D": 5},
+    "C": {"A": 2, "B": 1, "D": 8, "E": 10},
+    "D": {"B": 5, "C": 8, "E": 2, "F": 6},
+    "E": {"C": 10, "D": 2, "F": 5},
+    "F": {"D": 6, "E": 5}
+}
+source = "A"
+print("Shortest distances from vertex", source, "to all other vertices:")
+for vertex, distance in dijkstra(graph, source).items():
+    print("Vertex:", vertex, ", Distance:", distance)
